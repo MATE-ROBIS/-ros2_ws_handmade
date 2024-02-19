@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rtp_robot">
+    <ros2_control name="rtp_robot" type="system">
+        
+        <hardware>
+            <plugin>rtp_control/RtpModbus</plugin>
+            <param name="port">/dev/ttyUSB0</param>
+            <param name="baud_rate">115200</param>
+            <param name="data_bit">8</param>
+            <param name="stop_ bit">1</param>
+            <param name="left_wheel_name">left_wheel_joint</param>
+            <param name="right_wheel_name">right_wheel_joint</param>
+            <param name="gear_ratio">15</param>
+            <param name="rps_conversion">240</param>
+        </hardware>
+        <joint name="left_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="position"/>
+    
+        </joint>
+        <joint name="right_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="velocity"/>
+            <state_interface name="position"/>
+
+    
+        </joint>
+    
+    </ros2_control>
+    <transmission name="wheel_right_transmission">
+        <plugin>transmission_interface/SimpleTransmission</plugin>
+        <actuator name="wheel_right_motor" role="actuator_right"/>
+        <joint name="right_wheel_joint"    role="joint_right">
+          <mechanical_reduction>15.0</mechanical_reduction>
+        </joint>
+      </transmission>
+    
+      <transmission name="wheel_left_transmission">
+        <plugin>transmission_interface/SimpleTransmission</plugin>
+        <actuator name="wheel_left_motor" role="actuator_left"/>
+        <joint name="left_wheel_joint"    role="joint_left">
+          <mechanical_reduction>15.0</mechanical_reduction>
+        </joint>
+      </transmission>
+
+
+    
+
+</robot>

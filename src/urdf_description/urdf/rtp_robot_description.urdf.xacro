@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rtp_robot">
+    <xacro:include filename="rtp_ros2_control.xacro"/>
+    <link name="base_footprint"/>
+    <link name ="base_link">
+        <origin rpy ="0 0 0" xyz= "0 0 0"  />
+
+    </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin rpy="0 0 0" xyz="0 0 0.15"/>
+    </joint>
+    <link name ="left_wheel">
+        
+
+    </link>
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin rpy ="0 0 0" xyz= "0 0.395 0"  />
+        <axis xyz="0 1 0"/>
+        
+    </joint>
+
+    <link name ="right_wheel">
+        
+
+    </link>
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin rpy ="0 0 0" xyz= "0 -0.395 0"  />
+        <axis xyz="0 1 0"/>
+        
+    </joint>
+
+    <link name ="left_back_castor_wheel"/>
+    <link name="right_back_castor_wheel"/>
+
+    <joint name="left_back_castor_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_back_castor_wheel"/>
+        <origin rpy ="0 0 0" xyz= "-0.300 0.350 0"  />
+        
+    </joint>
+    <joint name="right_back_castor_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="right_back_castor_wheel"/>
+        <origin rpy ="0 0 0" xyz= "-0.300 -0.350 0"  />
+        
+    </joint>
+    <link name ="left_front_castor_wheel"/>
+    <link name="right_front_castor_wheel"/>
+
+    <joint name="left_front_castor_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_front_castor_wheel"/>
+        <origin rpy ="0 0 0" xyz= "0.300 0.250 0"  />
+        
+    </joint>
+    <joint name="right_front_castor_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="right_front_castor_wheel"/>
+        <origin rpy ="0 0 0" xyz= "0.300 -0.250 0"  />
+        
+    </joint>
+    <link name="laser_link"/>
+
+    <joint name="laser_link_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="laser_link"/>
+        <origin rpy ="0 0 0" xyz= "0.300 0 0.500"  />
+        
+    </joint>
+
+
+  
+
+
+</robot>

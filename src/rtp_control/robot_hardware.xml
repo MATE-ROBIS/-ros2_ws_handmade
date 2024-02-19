@@ -1,0 +1,9 @@
+<library path="rtp_control">
+    <class name="rtp_control/RtpModbus"
+           type="RtpModbus"
+           base_class_type="hardware_interface::SystemInterface">
+      <description>
+        Hardware Interface for RtpModbus controller.
+      </description>
+    </class>
+</library>
